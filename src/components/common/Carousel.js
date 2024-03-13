@@ -2,9 +2,9 @@
 import React, { useState, useEffect } from 'react';
 
 const slidesData = [
-  { id: 1, imageUrl: './6671436_3374577.jpg' },
-  { id: 2, imageUrl: './11773476_4849848.jpg' },
-  { id: 3, imageUrl: './13379794_5202622.jpg' },
+  { id: 1, imageUrl: `${process.env.PUBLIC_URL}/6671436_3374577.jpg` },
+  { id: 2, imageUrl: `${process.env.PUBLIC_URL}/11773476_4849848.jpg` },
+  { id: 3, imageUrl: `${process.env.PUBLIC_URL}/13379794_5202622.jpg` },
 ];
 
 const Carousel = () => {
