@@ -18,7 +18,7 @@ const Nav = ({onLogout, loggedIn}) => {
   return (
     <>
     <div onClick={() => handleSidebarToggle()} className={`backdrop ${isOpen ? 'z-20' : '-z-50'}`}></div>
-    <div className="h-[72px] bg-slate-900 fixed z-20 flex justify-between items-center inset-0 w-full">
+    <div className="h-[60px] md:h-[72px] bg-slate-900 fixed z-20 flex justify-between items-center inset-0 w-full">
       
       <div className={`mt-0 ml-4 fixed transform z-20 ease-in-out transition-all duration-300 ${
           isOpen ? 'translate-x-[255px]' : 'translate-x-0'
@@ -28,9 +28,9 @@ const Nav = ({onLogout, loggedIn}) => {
           onClick={handleSidebarToggle}
         >
           <div className={`w-10 h-10 px-[8px] flex flex-col justify-center gap-1  group-hover:bg-slate-900 rounded-md ${isOpen ? "bg-slate-900" : "bg-slate-800"}`}>
-            <span className={` w-full h-1 rounded-full group-hover:bg-blue-400 ${isOpen ? 'bg-blue-400' : 'bg-slate-400'}`}></span>
-            <span className={` w-full h-1 rounded-full group-hover:bg-rose-400 ${isOpen ? 'bg-rose-400' : 'bg-slate-400'}`}></span>
-            <span className={` w-full h-1 rounded-full group-hover:bg-yellow-400 ${isOpen ? 'bg-yellow-400' : 'bg-slate-400'}`}></span>
+            <span className={` w-full h-1 rounded-full group-hover:bg-blue-400 ${isOpen ? 'bg-blue-400' : 'bg-blue-400'}`}></span>
+            <span className={` w-full h-1 rounded-full group-hover:bg-rose-400 ${isOpen ? 'bg-rose-400' : 'bg-rose-400'}`}></span>
+            <span className={` w-full h-1 rounded-full group-hover:bg-yellow-400 ${isOpen ? 'bg-yellow-400' : 'bg-yellow-400'}`}></span>
           </div>
         </div>
       </div>
@@ -87,8 +87,8 @@ const Nav = ({onLogout, loggedIn}) => {
           </ul>
         </div>
       </div>
-      <div className={`fixed left-20 md:inset-0 md:mx-auto h-[70px]  flex justify-center items-center ${isOpen ? '-z-50' : 'z-0'}`}>
-        <Link to={'/'} className='font-black text-[40px] tracking-widest inline' onClick={() => setIsOpen(false)}>
+      <div className={`fixed left-[70px] md:inset-0 md:mx-auto h-[70px]  flex justify-center items-center ${isOpen ? '-z-50' : 'z-0'}`}>
+        <Link to={'/'} className='font-black text-[30px] md:text-[40px] tracking-wide inline' onClick={() => setIsOpen(false)}>
           <span className='text-blue-500'>U</span>
           <span className='text-pink-500'>X</span>
           <span className='text-yellow-500'>K</span>
@@ -101,7 +101,7 @@ const Nav = ({onLogout, loggedIn}) => {
       <div className="flex items-center justify-center fixed right-4">
         {loggedIn ? (
           <button className="text-slate-600 rounded-full w-8 h-8 bg-slate-950 p-[5px] flex items-center justify-center shadow-lg" onClick={onLogout}>
-            <FaSignOutAlt />
+            <FaSignOutAlt className='text-red-500' />
           </button>
         ) : (
           <Link to="/login" className="text-slate-500 rounded-full w-8 h-8 bg-slate-950 p-[5px] flex items-center justify-center shadow-lg">

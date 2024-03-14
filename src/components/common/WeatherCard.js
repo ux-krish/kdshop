@@ -67,19 +67,19 @@ const WeatherCard = () => {
   };
 
   return (
-    <div className= " bg-gradient-to-br from-indigo-800 to-purple-900 w-full p-1 rounded-lg shadow-md">
-      <div class=" bg-slate-100/20 h-full rounded-md py-4 px-3">
-      <h1 className="text-2xl mb-4">Weather Information <span></span></h1>
+    <div className= " bg-gradient-to-br from-pink-500 to-emerald-400 w-full p-[2px] rounded-lg shadow-md">
+      <div class=" bg-slate-950/50 h-full rounded-md py-4 px-3">
+      <h1 className="text-2xl mb-4 text-pink-300">Weather Information <span></span></h1>
       <div className="flex mb-4 w-full flex-row">
         <input
           type="text"
           placeholder="Search location..."
-          className="shadow-md px-4 py-2 mr-2 border text-slate-50 border-slate-300 bg-stone-800  rounded-lg flex-1"
+          className="shadow-md px-4 py-2 mr-2 border-[2px] text-slate-50 border-emerald-300 bg-stone-800 focus:outline-none focus:border-pink-400 rounded-lg flex-1"
           value={searchInput}
           onChange={(e) => setSearchInput(e.target.value)}
         />
         <button
-          className="px-4 py-2 shadow-md bg-stone-800 text-slate-400 rounded-lg basis-1/4"
+          className="px-4 py-2 shadow-md border-emerald-400 border-[2px] bg-stone-800 hover:bg-emerald-500 hover:text-slate-800 active:border-pink-400 active:bg-pink-400 text-slate-50 rounded-lg basis-1/4"
           onClick={handleSearch}
         >
           Search
@@ -88,7 +88,7 @@ const WeatherCard = () => {
       {loading ? (
         <p>Loading...</p>
       ) : (
-        <div className=' bg-gradient-to-br from-sky-400 to-pink-600 shadow-md p-[3px] rounded-lg flex'>
+        <div className=' bg-gradient-to-br from-teal-400 to-pink-600 shadow-md p-[2px] rounded-lg flex'>
           {weather && (
             <div className='w-full bg-slate-950/80 p-3 rounded-md'>
               <h2 className="text-md mb-2 font-medium">{weather.name}</h2>
