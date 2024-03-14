@@ -29,11 +29,12 @@ const Carousel = () => {
   }, [currentIndex]);
 
   return (
-    <div className="relative min-w-[100%] h-[100%] overflow-hidden ">
+    <div className='relative min-w-[100%] h-[100%] bg-gradient-to-br from-red-400 to-sky-400 p-[2px] rounded-lg'>
+      <div className="relative min-w-[100%] h-[100%] overflow-hidden  rounded-lg">
       {slidesData.map((slide, index) => (
         <div
           key={slide.id}
-          className={`absolute overflow-hidden inset-[1px] max-w-full h-full transition-opacity duration-500 ease-in-out rounded-lg ${
+          className={`absolute overflow-hidden inset-0 max-w-full h-full transition-opacity duration-500 ease-in-out rounded-lg ${
             index === currentIndex ? 'opacity-100' : 'opacity-0'
           }`}
         >
@@ -52,6 +53,7 @@ const Carousel = () => {
       >
         <svg width={10} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z" fill="#ec4899"/></svg>
       </button>
+    </div>
     </div>
   );
 };

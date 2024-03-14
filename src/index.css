@@ -4,7 +4,7 @@
 
 @layer utilities {
     .backdrop{
-        @apply m-1 fixed inset-0 transform transition-all duration-300 backdrop-blur-sm bg-slate-800/50;
+        @apply fixed inset-0 transform transition-all duration-300 backdrop-blur-sm bg-slate-800/50;
     }
     
 }

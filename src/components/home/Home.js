@@ -43,10 +43,10 @@ const Home = () => {
   return (
     <Layout >
       <div className='flex w-full h-full flex-wrap items-stretch justify-between gap-3'>
-        <div className='basis-1/2 grow h-[300px]'>
+        <div className='basis-1/2 grow min-h-[300px]'>
           <Carousel />
         </div>
-        <div className='flex bg-slate-700 md:basis-1/3 w-full  rounded-lg h-[300px]'>
+        <div className='flex bg-slate-700 md:basis-1/3 w-full  rounded-lg '>
           <WeatherCard />
         </div>
       </div>
@@ -56,12 +56,12 @@ const Home = () => {
           {UiProduct.map(item => {
             return (
               <div key={item.id} className={`${item.classes} flex items-center p-4 rounded-lg shadow-md transition duration-300 ease-in-out`}>
-              <div class="flex-1">
+              <div className="flex-1">
                   <h3 className="text-lg font-semibold mb-2 text-slate-50">{item.title}</h3>
                   <p className="text-slate-100">{item.description}</p>
                   <button className={`${item.btnClasses} mt-4 text-[12px] uppercase text-slate-200 hover:text-slate-50 font-semibold py-2 px-4 border border-slate-200 rounded-full transition duration-300 ease-in-out`}>View Details</button>
               </div>
-              <div class="w-32 h-32 bg-slate-200 rounded-md ml-4 overflow-hidden flex items-center justify-center"> 
+              <div className="w-32 h-32 bg-slate-200 rounded-md ml-4 overflow-hidden flex items-center justify-center"> 
                 <img src={item.imgUrl} className='object-cover h-full' alt="" />
               </div>
           </div>
