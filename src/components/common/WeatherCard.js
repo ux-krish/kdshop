@@ -71,23 +71,25 @@ const WeatherCard = () => {
     <div className="bg-gradient-to-br from-pink-500 to-sky-400 w-full p-[2px] rounded-lg shadow-md">
       <div className="bg-indigo-600/50 h-full rounded-md py-4 px-3 relative flex-col justify-between flex">
         <h1 className="text-2xl mb-4 text-sky-300 font-semibold">Weather Updates</h1>
-        <div className="flex mb-4 w-full flex-row">
+        <div className="flex mb-4 w-full flex-row flex-wrap gap-2">
           <input
             type="text"
             placeholder="Search location..."
-            className="shadow-md px-4 py-2 mr-2 border-[2px] text-slate-50 border-sky-300 bg-stone-800 focus:outline-none focus:border-pink-400 rounded-lg flex-1"
+            className="shadow-md px-4 py-2 border-[2px] text-slate-50 border-sky-300 bg-stone-800 focus:outline-none focus:border-pink-400 rounded-lg grow flex-none"
             value={searchInput}
             onChange={(e) => setSearchInput(e.target.value)}
           />
           <button
-            className="px-4 py-2 shadow-md border-sky-300 font-semibold border-[2px] bg-stone-800 hover:bg-emerald-500 hover:text-slate-800 active:border-pink-400 active:bg-pink-400 text-sky-300 rounded-lg basis-1/4"
+            className="px-2 text-[12px] py-2 shadow-md border-sky-300 font-semibold border-[2px] bg-stone-800 hover:bg-emerald-500 hover:text-slate-800 active:border-pink-400 active:bg-pink-400 text-sky-300 rounded-lg sm:basis-1/4 lg:basis-1/3 w-full"
             onClick={handleSearch}
           >
             Search
           </button>
         </div>
         {loading ? (
-          <p>Loading...</p>
+          <div className='h-full bg-gradient-to-br from-sky-300 to-pink-600 shadow-md rounded-lg flex min-h-[148px] p-5 items-center justify-center'>
+          <p className='text-sky-400 text-xl font-medium'>Loading...</p>
+          </div>
         ) : (
           <div className='h-full bg-gradient-to-br from-sky-300 to-pink-600 shadow-md p-[2px] rounded-lg flex'>
             {weather && (
