@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
-
+import { CiCalendarDate } from "react-icons/ci";
+import { IoSunnyOutline } from "react-icons/io5";
+import { MdBedtime } from "react-icons/md";
 const DateTimeBadge = () => {
   const [currentDateTime, setCurrentDateTime] = useState(new Date());
 
@@ -22,9 +24,16 @@ const DateTimeBadge = () => {
 
   return (
     <div className="text-white fixed right-5 flex flex-col md:flex-row  items-center md:gap-2 gap-1">
-      <span className="text-[12px] px-3 md:py-[5px] py-[2px] rounded-full bg-yellow-800">{formattedDate}</span>
+      <span className="text-[12px] px-3 md:py-[5px] py-[2px] rounded-full bg-yellow-800 flex items-center gap-1"><CiCalendarDate />{formattedDate}</span>
       <span className="text-[11px] flex gap-1">
         <span className=' rounded-full font-medium flex bg-blue-800 gap-[2px] px-3 py-[2px] items-center'>
+          {
+            hour >= 6 ? (
+              <MdBedtime />
+            ) : (
+              <IoSunnyOutline />
+            )
+          }
           <span className="block">{hour < 10 ? '0' + hour : hour}</span> :
           <span className="block">{minute < 10 ? '0' + minute : minute}</span> 
           {/*: <span className="block">{second < 10 ? '0' + second : second}</span>  */}

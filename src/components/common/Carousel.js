@@ -29,7 +29,7 @@ const Carousel = () => {
   }, [currentIndex]);
 
   return (
-    <div className="relative min-w-[100%] h-[300px] overflow-hidden ">
+    <div className="relative min-w-[100%] h-[100%] overflow-hidden ">
       {slidesData.map((slide, index) => (
         <div
           key={slide.id}

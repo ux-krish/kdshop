@@ -17,7 +17,7 @@ const Nav = () => {
   return (
     <>
     <div onClick={() => handleSidebarToggle()} className={`backdrop ${isOpen ? 'z-20' : '-z-50'}`}></div>
-    <div className="h-[72px] bg-slate-50/10 fixed z-20 flex justify-between items-center inset-0 w-full">
+    <div className="h-[72px] bg-slate-900 fixed z-20 flex justify-between items-center inset-0 w-full">
       
       <div className={`mt-0 ml-4 fixed transform z-20 ease-in-out transition-all duration-300 ${
           isOpen ? 'translate-x-[255px]' : 'translate-x-0'

@@ -8,7 +8,7 @@ import Nav from './common/Nav';
 const Main = () => {
   return (
     <Router basename={process.env.PUBLIC_URL}>
-      <div className=' min-h-dvh  bg-gradient-to-r from-fuchsia-400 to-cyan-400 flex flex-wrap items-stretch justify-center p-[2px]'>
+      <div className=' min-h-dvh  flex flex-wrap items-stretch justify-center'>
         <div className='bg-slate-800 w-full md:min-h-100 p-3'>
             <Nav />
             <Routes>
