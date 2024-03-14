@@ -9,11 +9,11 @@
     
 }
 
-.react-calendar {
-    background-color: #000; /* Example color */
-  }
-  
-  /* Override font size of day labels */
-.react-calendar__month-view__weekdays__weekday abbr {
-    font-size: 0.875rem; /* Example font size */
+@layer components {
+    .border-rainbow {
+      border: 2px solid;
+      border-image-slice: 1;
+      border-image-source: linear-gradient(to right, #ff0000, #ff8000, #ffff00, #80ff00, #00ff00, #00ff80, #00ffff, #0080ff, #0000ff, #8000ff, #ff00ff, #ff0080);
+      border-radius: 0.25rem;
+    }
 }

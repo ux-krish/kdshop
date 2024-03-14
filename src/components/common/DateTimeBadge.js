@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { CiCalendarDate } from "react-icons/ci";
 import { IoSunnyOutline } from "react-icons/io5";
 import { MdBedtime } from "react-icons/md";
 const DateTimeBadge = () => {
@@ -23,22 +22,25 @@ const DateTimeBadge = () => {
   hour = hour % 12 || 12;
 
   return (
-    <div className="text-white fixed right-5 flex flex-col md:flex-row  items-center md:gap-2 gap-1">
-      <span className="text-[12px] px-3 md:py-[5px] py-[2px] rounded-full bg-yellow-800 flex items-center gap-1"><CiCalendarDate />{formattedDate}</span>
-      <span className="text-[11px] flex gap-1">
-        <span className=' rounded-full font-medium flex bg-blue-800 gap-[2px] px-3 py-[2px] items-center'>
+    <div className="text-white fixed right-14 flex flex-col sm:flex-row  items-center md:gap-2 gap-1">
+      <span className="text-[11px] flex gap-1 w-full">
+        <span className=' rounded-full font-medium flex bg-slate-800 gap-[5px] px-3 h-[30px] items-center w-full justify-center shadow-lg '>
+          <span className='hidden sm:inline'>{formattedDate}</span>
           {
             hour >= 6 ? (
-              <MdBedtime />
+              <MdBedtime className="text-blue-500" />
             ) : (
-              <IoSunnyOutline />
+              <IoSunnyOutline className='text-yellow-500' />
             )
           }
-          <span className="block">{hour < 10 ? '0' + hour : hour}</span> :
-          <span className="block">{minute < 10 ? '0' + minute : minute}</span> 
+          <span className='flex gap-[2px]'>
+            <span className="block">{hour < 10 ? '0' + hour : hour}</span> :
+            <span className="block">{minute < 10 ? '0' + minute : minute}</span> 
+          </span>
+         
           {/*: <span className="block">{second < 10 ? '0' + second : second}</span>  */}
         </span>
-        <span className="w-[30px] h-[30px] bg-rose-800 rounded-full flex items-center justify-center">{amPm}</span>
+        {/* <span className="w-[30px] h-[30px] bg-rose-800 rounded-full flex items-center justify-center">{amPm}</span> */}
       </span>
     </div>
   );

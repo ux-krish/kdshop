@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import DateTimeBadge from './DateTimeBadge';
+import { FaSignInAlt, FaSignOutAlt } from 'react-icons/fa';
 
-const Nav = () => {
+const Nav = ({onLogout, loggedIn}) => {
   const [active, setActive] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
 
@@ -36,7 +37,7 @@ const Nav = () => {
       <div
         className={`${
           isOpen ? 'translate-x-0' : '-translate-x-full'
-        } transform top-0 left-0 w-64 bg-gray-900 h-full overflow-y-auto ease-in-out transition-all duration-300 fixed z-20`}
+        } transform top-0 left-0 w-64 bg-slate-900 h-full overflow-y-auto ease-in-out transition-all duration-300 fixed z-20`}
       >
         <div className="p-[2px] bg-gradient-to-r to-fuchsia-400 from-yellow-400 min-h-dvh flex">
           <ul className="flex flex-col gap-2 bg-slate-950/90 min-h-full w-full p-4 rounded-sm ">
@@ -86,7 +87,7 @@ const Nav = () => {
           </ul>
         </div>
       </div>
-      <div className={`fixed inset-0 mx-auto h-[70px] w-full flex justify-center items-center ${isOpen ? '-z-50' : 'z-0'}`}>
+      <div className={`fixed left-20 md:inset-0 md:mx-auto h-[70px]  flex justify-center items-center ${isOpen ? '-z-50' : 'z-0'}`}>
         <Link to={'/'} className='font-black text-[40px] tracking-widest inline' onClick={() => setIsOpen(false)}>
           <span className='text-blue-500'>U</span>
           <span className='text-pink-500'>X</span>
@@ -96,7 +97,22 @@ const Nav = () => {
       </div>
 
       <DateTimeBadge />
+
+      <div className="flex items-center justify-center fixed right-4">
+        {loggedIn ? (
+          <button className="text-slate-600 rounded-full w-8 h-8 bg-slate-950 p-[5px] flex items-center justify-center shadow-lg" onClick={onLogout}>
+            <FaSignOutAlt />
+          </button>
+        ) : (
+          <Link to="/login" className="text-slate-500 rounded-full w-8 h-8 bg-slate-950 p-[5px] flex items-center justify-center shadow-lg">
+            <FaSignInAlt />
+          </Link>
+        )}
+      </div>
     </div>
+
+    {/* Conditionally render login/logout icons */}
+   
     </>
   );
 };

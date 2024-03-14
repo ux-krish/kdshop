@@ -1,7 +1,7 @@
 import React from 'react'
 import Layout from '../common/Layout'
 import Carousel from '../common/Carousel'
-import Calendar from '../common/CalendarWidget';
+import WeatherCard from '../common/WeatherCard';
 
 const UiProduct = [
   {
@@ -46,8 +46,8 @@ const Home = () => {
         <div className='basis-1/2 grow h-[300px]'>
           <Carousel />
         </div>
-        <div className='flex bg-slate-700 basis-1/3  rounded-lg h-[300px]'>
-        <Carousel />
+        <div className='flex bg-slate-700 md:basis-1/3 w-full  rounded-lg h-[300px]'>
+          <WeatherCard />
         </div>
       </div>
       <div className="mt-3">
