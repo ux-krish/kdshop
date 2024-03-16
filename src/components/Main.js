@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import Home from './home/Home';
-import Gallery from './gallery/Gallery';
+import Weather from './weather/Weather';
 import Contact from './contact/Contact';
 import Nav from './common/Nav';
 import LoginPage from './auth/LoginPage';
@@ -31,8 +31,8 @@ const Main = () => {
               element={loggedIn ? <Home /> : <Navigate to="/login" />}
             />
             <Route
-              path="/gallery"
-              element={loggedIn ? <Gallery /> : <Navigate to="/login" />}
+              path="/weather"
+              element={loggedIn ? <Weather /> : <Navigate to="/login" />}
             />
             <Route
               path="/contact"

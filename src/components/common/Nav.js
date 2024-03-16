@@ -58,16 +58,16 @@ const Nav = ({onLogout, loggedIn}) => {
             </li>
             <li>
               <Link
-                to="/gallery"
+                to="/weather"
                 onClick={() => {
-                  handleClick('/gallery');
+                  handleClick('/weather');
                   handleSidebarToggle();
                 }}
                 className={`px-5 py-2 w-full block text-sm font-medium  rounded-sm tracking-wider uppercase text-gray-300 hover:bg-indigo-500 transition-all ease-in-out duration-150 ${
                   active === '/gallery' ? 'bg-indigo-500  text-slate-800' : ''
                 }`}
               >
-                Gallery
+                Weather
               </Link>
             </li>
             <li>
