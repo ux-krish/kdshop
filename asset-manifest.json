@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "https://ux-krish.github.io/kdshop/static/css/main.bf686a6a.css",
-    "main.js": "https://ux-krish.github.io/kdshop/static/js/main.f41e1fc4.js",
+    "main.js": "https://ux-krish.github.io/kdshop/static/js/main.19305195.js",
     "static/js/453.298da8b1.chunk.js": "https://ux-krish.github.io/kdshop/static/js/453.298da8b1.chunk.js",
     "index.html": "https://ux-krish.github.io/kdshop/index.html",
     "main.bf686a6a.css.map": "https://ux-krish.github.io/kdshop/static/css/main.bf686a6a.css.map",
-    "main.f41e1fc4.js.map": "https://ux-krish.github.io/kdshop/static/js/main.f41e1fc4.js.map",
+    "main.19305195.js.map": "https://ux-krish.github.io/kdshop/static/js/main.19305195.js.map",
     "453.298da8b1.chunk.js.map": "https://ux-krish.github.io/kdshop/static/js/453.298da8b1.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.bf686a6a.css",
-    "static/js/main.f41e1fc4.js"
+    "static/js/main.19305195.js"
   ]
 }
