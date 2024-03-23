@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import moment from 'moment';
-import { FaWind, FaTint, FaCloudSun, FaThermometerHalf, FaLocationArrow  } from 'react-icons/fa';
+import { FaWind, FaTint, FaThermometerHalf, FaLocationArrow  } from 'react-icons/fa';
 import { GiPositionMarker } from 'react-icons/gi'
 
 
@@ -14,6 +14,11 @@ const WeatherCard = () => {
   const [windSpeed, setWindSpeed] = useState('');
   const [cloudCover, setCloudCover] = useState('');
   const [weatherDesc, setWeatherDesc] = useState('');
+  const [currentConditions , setCurrentConditions] = useState('');
+
+  const [backgroundImage, setBackgroundImage] = useState('');
+
+
 
   useEffect(() => {
     fetchGeolocationWeather();
@@ -58,11 +63,12 @@ const WeatherCard = () => {
       const data = await response.json();
       setWeather(data);
       console.log(data);
-      setCurrentTemp(data.days[0].temp);
-      setHumidity(data.days[0].humidity);
-      setWindSpeed(data.days[0].windspeed);
-      setCloudCover(data.days[0].cloudcover);
+      setCurrentTemp(data.currentConditions.temp);
+      setHumidity(data.currentConditions.humidity);
+      setWindSpeed(data.currentConditions.windspeed);
+      setCloudCover(data.currentConditions.cloudcover);
       setWeatherDesc(data.description);
+      setCurrentConditions(data.currentConditions.conditions);
       setLoading(false);
     } catch (error) {
       console.error('Error fetching weather data:', error);
@@ -119,16 +125,43 @@ const WeatherCard = () => {
   };
   
 
+  const updateBackground = () => {
+    const hour = new Date().getHours(); // Get the current hour
+    let background;
+
+    if (hour >= 6 && hour < 12) {
+      // Morning
+      background = 'morning.jpg';
+    } else if (hour >= 12 && hour < 18) {
+      // Noon
+      background = 'noon.jpg';
+    } else if (hour >= 18 && hour < 24) {
+      // Evening
+      background = 'evening.jpg';
+    } else {
+      // Night
+      background = 'night.jpg';
+    }
+
+    setBackgroundImage(background);
+  };
+
+  useEffect(() => {
+    updateBackground();
+    const interval = setInterval(updateBackground, 1000 * 60 * 60); // Update every hour
+    return () => clearInterval(interval); // Cleanup interval on component unmount
+  }, []);
+
 
   return (
     <div className="rounded-md shadow-md">
       <h1 className="text-2xl mb-4 text-slate-500 font-semibold">Weather Updates</h1>
       <div className="flex items-center mb-4 gap-2">
       <button
-          className="w-12 h-12 flex items-center justify-center bg-slate-950/30 text-white rounded-md hover:bg-green-600 focus:outline-none"
+          className="w-12 h-12 flex items-center justify-center bg-slate-950/30 text-white rounded-md group focus:outline-none"
           onClick={fetchGeolocationWeather}
         >
-          <GiPositionMarker className="text-xl text-slate-500" />
+          <GiPositionMarker className="text-xl text-slate-500 group-hover:text-green-200" />
         </button>
         <input
           type="text"
@@ -138,10 +171,10 @@ const WeatherCard = () => {
           onChange={(e) => setSearchInput(e.target.value)}
         />
         <button
-          className="px-4 h-12 bg-slate-950/30 text-white rounded-md hover:bg-blue-600 focus:outline-none"
+          className="px-4 h-12 bg-slate-950/30 text-white rounded-md group focus:outline-none"
           onClick={handleSearch}
         >
-          <FaLocationArrow className="text-xl text-slate-500" />
+          <FaLocationArrow className="text-xl text-slate-500 group-hover:text-blue-200" />
         </button>
        
       </div>
@@ -150,35 +183,49 @@ const WeatherCard = () => {
       ) : (
         <>
           <p className="mb-4 text-slate-500 font-light"><span className='font-bold'>Location:</span> {location}</p>
-          <div className="flex flex-wrap items-start justify-between bg-gradient-to-br from-purple-700/30 to-sky-300/30 p-4 rounded-md shadow-md  sm:mb-0 mb-4 min-h-80">
-            <div className="flex gap-5 gap-y-2 md:gap-10 mb-0 flex-wrap">
-              <p className="text-slate-500 flex items-center">
-                <FaThermometerHalf className="mr-2 text-rose-600" /> {currentTemp} °C
-                
+          <div
+          style={{
+            width: '100%',
+            minHeight: '300px',
+            background: `url(${process.env.PUBLIC_URL}/${backgroundImage}) no-repeat center center fixed`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center'
+          }} 
+          className="flex w-full overflow-hidden rounded-md shadow-md">
+
+           <div className='flex flex-wrap items-center justify-between p-4  min-h-full bg-gray-950/70 w-full '>
+           <div className="flex gap-3 flex-wrap grow flex-col mb-auto">
+              <p className="text-slate-200 flex items-center text-6xl font-extrabold mt-2">
+                <FaThermometerHalf className="mr-1 text-rose-600 text-5xl relative top-[2px]" /> {currentTemp} °C
               </p>
-              <p className="text-slate-500 flex items-center">
+              <p className='px-3 text-3xl'>{currentConditions}</p>
+              <div className='flex flex-col items-start px-3'>
+              <p className="text-slate-200 flex items-center mb-1">
                 <FaWind className="mr-2 text-sky-300" /> {windSpeed} km/h
               </p>
-              <p className="text-slate-500 flex items-center">
-                <FaTint className="mr-2" /> {humidity}%
+              <p className="text-slate-200 flex items-center mb-1">
+                <FaTint className="mr-2 text-sky-300" /> {humidity}%
               </p>
-              <p className="text-slate-500 flex items-center">
-                <img src={`${process.env.PUBLIC_URL}/cloudy-day-1.svg`} className='w-10 h-8 object-contain' /> {cloudCover}%
+              <p className="text-slate-200 flex items-center justify-start relative -left-[12px]">
+                <img src={`${process.env.PUBLIC_URL}/cloudy-day-1.svg`} className='w-9 h-8 object-cover ' /> {cloudCover}%
+              </p>
+              </div>
+            </div>
+            <div className='m-0 mt-auto'>
+              <p className="text-slate-500 flex items-center text-sm">
+                ***{weatherDesc}
               </p>
             </div>
-            <div>
-            <p className="text-slate-500 flex items-center">
-              ***{weatherDesc}
-            </p>
-            </div>
+           </div>
           </div>
           <div className="flex flex-wrap gap-4 mt-4">
             {weather && weather.days.slice(1, 16).map((day, index) => (
               <div key={index} className="bg-slate-950/30 p-4 rounded-md shadow-md flex-grow">
-                <p className="text-slate-500 font-bold">{moment(day.datetime).format('MMM D')}</p>
-                <p className="text-slate-500 flex items-center"><FaThermometerHalf className="mr-1" /> {day.temp} °C</p>
-                <p className="text-slate-500 flex items-center"><FaTint className="mr-1" />{day.humidity}% Humidity</p>
-                <p className="text-slate-500 flex items-center"><FaWind className="mr-1" />{day.windspeed} km/h Wind</p>
+                <p className="text-slate-200 font-bold mb-2 border-b-2 border-slate-700">{moment(day.datetime).format('MMM D')}</p>
+                <p className="text-slate-400 text-sm flex items-center"><FaThermometerHalf className="mr-1 text-rose-600" /> {day.feelslikemax} °C Max</p>
+                <p className="text-slate-400 text-sm flex items-center"><FaThermometerHalf className="mr-1 text-sky-200" /> {day.feelslikemin} °C Min</p>
+                <p className="text-slate-400 text-sm flex items-center"><FaTint className="mr-1 text-sky-300" />{day.humidity}% Humidity</p>
+                <p className="text-slate-400 text-sm flex items-center"><FaWind className="mr-1 text-sky-300" />{day.windspeed} km/h Wind</p>
               </div>
             ))}
           </div>
