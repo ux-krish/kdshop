@@ -1,6 +1,6 @@
 import React from 'react'
 import Layout from '../common/Layout'
-import WeatherCard from '../common/WeatherCard'
+import WeatherCard from './WeatherCard'
 
 const Gallery = () => {
   return (
