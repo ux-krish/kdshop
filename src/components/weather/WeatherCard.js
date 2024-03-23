@@ -150,20 +150,20 @@ const WeatherCard = () => {
       ) : (
         <>
           <p className="mb-4 text-slate-500 font-light"><span className='font-bold'>Location:</span> {location}</p>
-          <div className="flex flex-wrap justify-between bg-slate-950/30 p-4 rounded-md shadow-md  sm:mb-0 mb-4">
+          <div className="flex flex-wrap items-start justify-between bg-gradient-to-br from-purple-700/30 to-sky-300/30 p-4 rounded-md shadow-md  sm:mb-0 mb-4 min-h-80">
             <div className="flex gap-5 gap-y-2 md:gap-10 mb-0 flex-wrap">
               <p className="text-slate-500 flex items-center">
-                <FaThermometerHalf className="mr-2" /> {currentTemp} °C
+                <FaThermometerHalf className="mr-2 text-rose-600" /> {currentTemp} °C
                 
               </p>
               <p className="text-slate-500 flex items-center">
-                <FaWind className="mr-2" /> {windSpeed} km/h
+                <FaWind className="mr-2 text-sky-300" /> {windSpeed} km/h
               </p>
               <p className="text-slate-500 flex items-center">
                 <FaTint className="mr-2" /> {humidity}%
               </p>
               <p className="text-slate-500 flex items-center">
-                <FaCloudSun className="mr-2" /> {cloudCover}%
+                <img src={`${process.env.PUBLIC_URL}/cloudy-day-1.svg`} className='w-10 h-8 object-contain' /> {cloudCover}%
               </p>
             </div>
             <div>
@@ -176,9 +176,9 @@ const WeatherCard = () => {
             {weather && weather.days.slice(1, 16).map((day, index) => (
               <div key={index} className="bg-slate-950/30 p-4 rounded-md shadow-md flex-grow">
                 <p className="text-slate-500 font-bold">{moment(day.datetime).format('MMM D')}</p>
-                <p className="text-slate-500">{day.temp} °C</p>
-                <p className="text-slate-500">{day.humidity}% Humidity</p>
-                <p className="text-slate-500">{day.windspeed} km/h Wind</p>
+                <p className="text-slate-500 flex items-center"><FaThermometerHalf className="mr-1" /> {day.temp} °C</p>
+                <p className="text-slate-500 flex items-center"><FaTint className="mr-1" />{day.humidity}% Humidity</p>
+                <p className="text-slate-500 flex items-center"><FaWind className="mr-1" />{day.windspeed} km/h Wind</p>
               </div>
             ))}
           </div>
