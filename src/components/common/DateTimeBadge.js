@@ -36,11 +36,11 @@ const DateTimeBadge = () => {
     <div className="text-white fixed right-14 flex flex-col sm:flex-row items-center md:gap-2 gap-1">
       <span className="text-[11px] flex gap-1 w-full">
         <span className='rounded-full font-medium flex bg-slate-800 gap-[5px] px-3 h-[30px] items-center justify-center shadow-lg '>
-          <span className=' sm:inline'>
+          {/* <span className=' sm:inline'>
             <span className="mr-[3px] text-yellow-500">{currentDateTime.toLocaleString(undefined, { month: 'short' })}</span>
             <span className="mr-[4px] text-rose-500">{currentDateTime.getDate()}</span>
             <span className='text-emerald-100 text-[10px] bg-emerald-600 rounded-full px-1'>{currentDateTime.getFullYear()}</span>
-          </span>
+          </span> */}
           {icon}
           <span className='flex gap-[2px] items-center'>
             <span className="block text-yellow-500">{hour < 10 ? '0' + hour : hour}</span> :

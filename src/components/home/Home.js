@@ -10,7 +10,7 @@ const UiProduct = [
     description: "Check your weather forecast",
     classes: "bg-gradient-to-br from-green-400 to-blue-500 hover:bg-gradient-to-br hover:from-pink-400 hover:to-purple-500",
     btnClasses : "bg-teal-600",
-    imgUrl : `${process.env.PUBLIC_URL}/weather.svg`,
+    imgUrl : `${process.env.PUBLIC_URL}/cloudy.svg`,
     link : "/weather"
   },
   {

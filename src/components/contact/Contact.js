@@ -1,5 +1,6 @@
 import React from 'react';
-import Layout from '../common/Layout'
+import Layout from '../common/Layout';
+import profilepic from '../../assets/uxkd.jpg'
 
 const Contact = () => {
   return (
@@ -7,11 +8,12 @@ const Contact = () => {
       <div className="container max-w-4xl mx-auto py-5 text-slate-100 ">
       <h1 className="text-3xl font-bold text-center mb-10">Contact Us</h1>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-        <div className=' bg-gradient-to-br from-emerald-500 to-purple-400 h-full items-center flex flex-col justify-center rounded-md py-7'>
+        <div className=' bg-gradient-to-br from-emerald-500 to-purple-400 h-full items-center flex flex-col justify-center rounded-md py-7 px-3 text-center'>
+          <img src={profilepic} className='w-40 rounded-md mb-5' alt="" />
           <h2 className="text-xl font-semibold mb-3">Contact Information</h2>
-          <p>Email: test.test@test.com</p>
-          <p>Phone: +1234567890</p>
-          <p>Address: 123 Street Name, City, Country</p>
+          <p>Email: <a href='mailto:krishnendu.rantu@gmail.com'>krishnendu.rantu@gmail.com</a></p>
+          <p>Phone: <a href='tel:+919804619061'>+919804619061</a></p>
+          <p>Address: 298, Purba Sinthee Bye Lane, Dum Dum, Kolkata - 700030</p>
         </div>
         <div>
           <h2 className="text-xl font-semibold mb-3">Contact Form</h2>

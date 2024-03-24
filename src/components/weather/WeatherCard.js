@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import moment from 'moment';
-import { FaWind, FaTint, FaThermometerHalf, FaLocationArrow  } from 'react-icons/fa';
+import { FaWind, FaTint, FaThermometerHalf, FaLocationArrow ,FaMapPin   } from 'react-icons/fa';
 import { GiPositionMarker } from 'react-icons/gi'
 
 
@@ -179,10 +179,63 @@ const WeatherCard = () => {
        
       </div>
       {loading ? (
-        <p className="text-slate-500">Loading...</p>
+       <div class="border border-slate-800 rounded-md p-4 w-full mx-auto">
+       <div class="animate-pulse flex space-x-4 ">
+           <div class="flex-1 space-y-6 py-1">
+             <div class="space-y-3">
+               <div class="grid grid-cols-3 gap-4">
+                 <div class="h-2 bg-slate-700 rounded col-span-2"></div>
+                 <div class="h-2 bg-slate-700 rounded col-span-1"></div>
+               </div>
+               <div class="h-2 bg-slate-700 rounded"></div>
+             </div>
+           </div>
+         </div>
+         <div class="animate-pulse flex space-x-4 mt-4">
+           <div class="flex-1 space-y-6 py-1">
+             <div class="space-y-3">
+               <div class="grid grid-cols-3 gap-4">
+                 <div class="h-2 bg-slate-700 rounded col-span-2"></div>
+                 <div class="h-2 bg-slate-700 rounded col-span-1"></div>
+               </div>
+               <div class="h-2 bg-slate-700 rounded"></div>
+             </div>
+           </div>
+           <div class="flex-1 space-y-6 py-1">
+             <div class="space-y-3">
+               <div class="grid grid-cols-3 gap-4">
+                 <div class="h-2 bg-slate-700 rounded col-span-2"></div>
+                 <div class="h-2 bg-slate-700 rounded col-span-1"></div>
+               </div>
+               <div class="h-2 bg-slate-700 rounded"></div>
+             </div>
+           </div>
+         </div>
+         <div class="animate-pulse flex space-x-4 mt-4">
+           <div class="flex-1 space-y-6 py-1">
+             <div class="space-y-3">
+               <div class="grid grid-cols-3 gap-4">
+                 <div class="h-2 bg-slate-700 rounded col-span-2"></div>
+                 <div class="h-2 bg-slate-700 rounded col-span-1"></div>
+               </div>
+               <div class="h-2 bg-slate-700 rounded"></div>
+             </div>
+           </div>
+           <div class="flex-1 space-y-6 py-1">
+             <div class="space-y-3">
+               <div class="grid grid-cols-3 gap-4">
+                 <div class="h-2 bg-slate-700 rounded col-span-2"></div>
+                 <div class="h-2 bg-slate-700 rounded col-span-1"></div>
+               </div>
+               <div class="h-2 bg-slate-700 rounded"></div>
+             </div>
+           </div>
+         </div>
+       </div>
       ) : (
         <>
-          <p className="mb-4 text-slate-400 font-light"><span className='font-bold'>Location:</span> {location}</p>
+        
+          <p className="mb-4 text-slate-400 font-light flex items-start"><span className='font-bold mr-2 ms-2 relative top-[3px]'><FaMapPin  /></span> {location}</p>
           <div
           style={{
             width: '100%',
@@ -220,7 +273,7 @@ const WeatherCard = () => {
           </div>
           <div className="flex flex-wrap gap-4 mt-4">
             {weather && weather.days.slice(1, 16).map((day, index) => (
-              <div key={index} className="bg-slate-950/30 p-4 rounded-md shadow-md flex-grow lg:basis-1/5">
+              <div key={index} className="bg-slate-950/30 p-4 rounded-md shadow-md flex-grow basis-1/3 xl:basis-1/6 lg:basis-1/5">
                 <p className="text-slate-200 font-bold mb-2 pb-2 border-b-2 border-slate-800">{moment(day.datetime).format('MMM D')}</p>
                 <p className="text-slate-400 flex items-center text-2xl font-extrabold mb-[5px]">
                   <FaThermometerHalf className="mr-1 text-rose-600" /> {Math.round(day.feelslikemax)} <sup className='text-[12px] relative -top-[3px]'>°C</sup> <span className='ms-2 text-[12px] flex items-center gap-0 font-normal relative -bottom-[2px] -tracking-wide'><FaThermometerHalf className="me-[2px] text-sky-200" /> {Math.round(day.feelslikemin)} <sup className='text-[5px]'>°C</sup></span></p>
