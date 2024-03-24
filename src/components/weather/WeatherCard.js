@@ -155,10 +155,10 @@ const WeatherCard = () => {
 
   return (
     <div className="rounded-md shadow-md">
-      <h1 className="text-2xl mb-4 text-slate-500 font-semibold">Weather Updates</h1>
+      <h1 className="text-2xl mb-4 text-slate-200 font-semibold">Weather Updates</h1>
       <div className="flex items-center mb-4 gap-2">
       <button
-          className="w-12 h-12 flex items-center justify-center bg-slate-950/30 text-white rounded-md group focus:outline-none"
+          className="w-12 h-12 flex items-center justify-center bg-slate-950/30 hover:bg-slate-950/60 text-white rounded-md group focus:outline-none"
           onClick={fetchGeolocationWeather}
         >
           <GiPositionMarker className="text-xl text-slate-500 group-hover:text-green-200" />
@@ -171,7 +171,7 @@ const WeatherCard = () => {
           onChange={(e) => setSearchInput(e.target.value)}
         />
         <button
-          className="px-4 h-12 bg-slate-950/30 text-white rounded-md group focus:outline-none"
+          className="px-4 h-12 bg-slate-950/30 hover:bg-slate-950/60 text-white rounded-md group focus:outline-none"
           onClick={handleSearch}
         >
           <FaLocationArrow className="text-xl text-slate-500 group-hover:text-blue-200" />
@@ -182,7 +182,7 @@ const WeatherCard = () => {
         <p className="text-slate-500">Loading...</p>
       ) : (
         <>
-          <p className="mb-4 text-slate-500 font-light"><span className='font-bold'>Location:</span> {location}</p>
+          <p className="mb-4 text-slate-400 font-light"><span className='font-bold'>Location:</span> {location}</p>
           <div
           style={{
             width: '100%',
@@ -196,7 +196,7 @@ const WeatherCard = () => {
            <div className='flex flex-wrap items-center justify-between p-4  min-h-full bg-gray-950/70 w-full '>
            <div className="flex gap-3 flex-wrap grow flex-col mb-auto">
               <p className="text-slate-200 flex items-center text-6xl font-extrabold mt-2">
-                <FaThermometerHalf className="mr-1 text-rose-600 text-5xl relative top-[2px]" /> {currentTemp} °C
+                <FaThermometerHalf className="mr-1 text-rose-600 text-5xl relative top-[2px]" /> {Math.round(currentTemp)} <sup className='text-[20px] relative -top-[12px] left-1'>°C</sup>
               </p>
               <p className='px-3 text-3xl'>{currentConditions}</p>
               <div className='flex flex-col items-start px-3'>
@@ -220,10 +220,11 @@ const WeatherCard = () => {
           </div>
           <div className="flex flex-wrap gap-4 mt-4">
             {weather && weather.days.slice(1, 16).map((day, index) => (
-              <div key={index} className="bg-slate-950/30 p-4 rounded-md shadow-md flex-grow">
-                <p className="text-slate-200 font-bold mb-2 border-b-2 border-slate-700">{moment(day.datetime).format('MMM D')}</p>
-                <p className="text-slate-400 text-sm flex items-center"><FaThermometerHalf className="mr-1 text-rose-600" /> {day.feelslikemax} °C Max</p>
-                <p className="text-slate-400 text-sm flex items-center"><FaThermometerHalf className="mr-1 text-sky-200" /> {day.feelslikemin} °C Min</p>
+              <div key={index} className="bg-slate-950/30 p-4 rounded-md shadow-md flex-grow lg:basis-1/5">
+                <p className="text-slate-200 font-bold mb-2 pb-2 border-b-2 border-slate-800">{moment(day.datetime).format('MMM D')}</p>
+                <p className="text-slate-400 flex items-center text-2xl font-extrabold mb-[5px]">
+                  <FaThermometerHalf className="mr-1 text-rose-600" /> {Math.round(day.feelslikemax)} <sup className='text-[12px] relative -top-[3px]'>°C</sup> <span className='ms-2 text-[12px] flex items-center gap-0 font-normal relative -bottom-[2px] -tracking-wide'><FaThermometerHalf className="me-[2px] text-sky-200" /> {Math.round(day.feelslikemin)} <sup className='text-[5px]'>°C</sup></span></p>
+                <p className="text-slate-400 text-[18px] font-semibold flex items-center mb-3 px-1">{day.conditions}</p>
                 <p className="text-slate-400 text-sm flex items-center"><FaTint className="mr-1 text-sky-300" />{day.humidity}% Humidity</p>
                 <p className="text-slate-400 text-sm flex items-center"><FaWind className="mr-1 text-sky-300" />{day.windspeed} km/h Wind</p>
               </div>
