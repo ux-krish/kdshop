@@ -258,7 +258,7 @@ const WeatherCard = () => {
           </div>
           <div className="flex flex-wrap gap-4 mt-4">
               <div className='flex flex-wrap justify-between items-start overflow-hidden gap-4'>
-                <h2 className='text-3xl font-bold p-5 basis-full'>15-Days 24x7 Forcast</h2>
+                <h2 className='text-3xl font-bold tracking-wider p-5 basis-full'>15-Days 24x7 Forcast</h2>
                 {weather &&
                 weather.days.slice(0, 15).map((day, index) => (
                   <div key={index} className="bg-slate-950/50 w-full p-0 shadow-md select-none rounded-lg overflow-hidden">
@@ -286,7 +286,17 @@ const WeatherCard = () => {
                               <td className='py-2 px-3  w-[70px]'><FaThermometerHalf className="mr-[2px] -mt-[1px] text-rose-500 inline-block text-[10px] md:text-[15px]" /> {Math.round(hour.feelslike)}<sup className='text-[7px]'>°C</sup></td>
                               <td className='py-2 px-3  w-[80px]'><FaTint className="mr-[3px] -mt-[2px] text-sky-300 inline-block text-[10px] md:text-[15px]" /> {hour.humidity} %</td>
                               <td className='py-2 px-3  w-[90px]'><FaWind className="mr-[3px] -mt-[2px] text-sky-300 inline-block text-[10px] md:text-[15px]" /> {hour.windspeed} <sup className='font-light text-[7px]'>km/h</sup></td>
-                              <td className='py-2 px-3  w-[150px] text-start'>{hour.conditions}</td>
+                              <td className='py-2 px-3  w-[150px] text-center flex items-center'>
+                                
+                                <span>
+                                {hour.conditions === 'Partially cloudy' && <img src={`${process.env.PUBLIC_URL}/cloudy-day-2.svg`} className='w-9 h-8 mx-auto object-cover' alt="cloudcover" />}
+                                {hour.conditions === 'Overcast' && <img src={`${process.env.PUBLIC_URL}/cloudy.svg`} className='w-9 h-8 mx-auto object-cover' alt="cloudcover" />}
+                                {hour.conditions === 'Clear' && <img src={`${process.env.PUBLIC_URL}/day.svg`} className='w-9 h-8 mx-auto object-cover' alt="cloudcover" />}
+                                {hour.conditions === 'Patially Cloudy' && <img src={`${process.env.PUBLIC_URL}/cloudy-day-1.svg`} className='w-9 h-8 mx-auto object-cover' alt="cloudcover" />}
+                                {hour.conditions === 'Patially Cloudy' && <img src={`${process.env.PUBLIC_URL}/cloudy-day-1.svg`} className='w-9 h-8 mx-auto object-cover' alt="cloudcover" />}
+                                </span>
+                                <span className='text-[9px]'>{hour.conditions}</span>
+                              </td>
                             </tr>
                           ))}
                         </tbody>
