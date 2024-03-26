@@ -236,7 +236,14 @@ const WeatherCard = () => {
                       <FaThermometerHalf className="mr-1 text-rose-500 relative top-[0px]" />
                     </span>
                   </p>
-                  <p className='px-3 text-3xl'>{currentConditions}</p>
+                  <p className='px-3 md:text-3xl text-lg font-medium'>
+                    {currentConditions}
+                    {currentConditions === 'Partially cloudy' && <img src={`${process.env.PUBLIC_URL}/cloudy-day-2.svg`} className='w-20 h-20 object-cover' alt="cloudcover" />}
+                    {currentConditions === 'Overcast' && <img src={`${process.env.PUBLIC_URL}/cloudy.svg`} className='w-20 h-20 object-cover' alt="cloudcover" />}
+                    {currentConditions === 'Clear' && <img src={`${process.env.PUBLIC_URL}/day.svg`} className='w-20 h-20 object-cover' alt="cloudcover" />}
+                    {currentConditions === 'Rain, Partially cloudy' && <img src={`${process.env.PUBLIC_URL}/rainy-3.svg`} className='w-20 h-20 object-cover' alt="cloudcover" />}
+                    {currentConditions === 'Rain, Overcast' && <img src={`${process.env.PUBLIC_URL}/rainy-6.svg`} className='w-20 h-20 object-cover' alt="cloudcover" />}
+                  </p>
                   <div className='flex flex-col items-start px-3'>
                   <p className="text-slate-200 flex items-center mb-1">
                     <FaWind className="mr-2 text-sky-300" /> {windSpeed} km/h
@@ -261,7 +268,7 @@ const WeatherCard = () => {
                 <h2 className='text-3xl font-bold tracking-wider p-5 basis-full'>15-Days 24x7 Forcast</h2>
                 {weather &&
                 weather.days.slice(0, 15).map((day, index) => (
-                  <div key={index} className="bg-slate-950/50 w-full p-0 shadow-md select-none rounded-lg overflow-hidden">
+                  <div key={index} className="bg-slate-950/50 w-full p-0 shadow-md rounded-lg overflow-hidden">
                     <p className="text-slate-200 flex justify-between font-bold p-4 border-slate-800 cursor-pointer mb-0" onClick={() => handleDayClick(index)}>
                       <span>{moment(day.datetime).format('MMM D')}</span>
                       <span><FaThermometerHalf className="mr-[0px] -mt-[3px] text-rose-500 inline-block text-[14px]" /> {Math.round(day.feelslike)}<sup className='text-[7px]'>°C</sup></span>
@@ -286,14 +293,14 @@ const WeatherCard = () => {
                               <td className='py-2 px-3  w-[70px]'><FaThermometerHalf className="mr-[2px] -mt-[1px] text-rose-500 inline-block text-[10px] md:text-[15px]" /> {Math.round(hour.feelslike)}<sup className='text-[7px]'>°C</sup></td>
                               <td className='py-2 px-3  w-[80px]'><FaTint className="mr-[3px] -mt-[2px] text-sky-300 inline-block text-[10px] md:text-[15px]" /> {hour.humidity} %</td>
                               <td className='py-2 px-3  w-[90px]'><FaWind className="mr-[3px] -mt-[2px] text-sky-300 inline-block text-[10px] md:text-[15px]" /> {hour.windspeed} <sup className='font-light text-[7px]'>km/h</sup></td>
-                              <td className='py-2 px-3  w-[150px] text-center flex items-center'>
+                              <td className='py-2 px-3  w-min-[150px] text-center flex items-center'>
                                 
                                 <span>
                                 {hour.conditions === 'Partially cloudy' && <img src={`${process.env.PUBLIC_URL}/cloudy-day-2.svg`} className='w-9 h-8 mx-auto object-cover' alt="cloudcover" />}
                                 {hour.conditions === 'Overcast' && <img src={`${process.env.PUBLIC_URL}/cloudy.svg`} className='w-9 h-8 mx-auto object-cover' alt="cloudcover" />}
                                 {hour.conditions === 'Clear' && <img src={`${process.env.PUBLIC_URL}/day.svg`} className='w-9 h-8 mx-auto object-cover' alt="cloudcover" />}
-                                {hour.conditions === 'Patially Cloudy' && <img src={`${process.env.PUBLIC_URL}/cloudy-day-1.svg`} className='w-9 h-8 mx-auto object-cover' alt="cloudcover" />}
-                                {hour.conditions === 'Patially Cloudy' && <img src={`${process.env.PUBLIC_URL}/cloudy-day-1.svg`} className='w-9 h-8 mx-auto object-cover' alt="cloudcover" />}
+                                {hour.conditions === 'Rain, Partially cloudy' && <img src={`${process.env.PUBLIC_URL}/rainy-3.svg`} className='w-9 h-8 mx-auto object-cover' alt="cloudcover" />}
+                                {hour.conditions === 'Rain, Overcast' && <img src={`${process.env.PUBLIC_URL}/rainy-6.svg`} className='w-9 h-8 mx-auto object-cover' alt="cloudcover" />}
                                 </span>
                                 <span className='text-[9px]'>{hour.conditions}</span>
                               </td>
