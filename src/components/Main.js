@@ -6,6 +6,7 @@ import Contact from './contact/Contact';
 import Nav from './common/Nav';
 import LoginPage from './auth/LoginPage';
 
+
 const Main = () => {
   const [loggedIn, setLoggedIn] = useState(localStorage.getItem('loggedIn') === 'true');
 
