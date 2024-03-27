@@ -265,7 +265,7 @@ const WeatherCard = () => {
           </div>
           <div className="flex flex-wrap gap-4 mt-4">
               <div className='flex flex-wrap justify-between items-start overflow-hidden gap-4'>
-                <h2 className='text-3xl font-bold tracking-wider p-5 basis-full'>15-Days 24x7 Forcast</h2>
+                <h2 className='text-lg md:text-3xl font-bold tracking-wider p-5 basis-full'>15-Days 24x7 Forcast</h2>
                 {weather &&
                 weather.days.slice(0, 15).map((day, index) => (
                   <div key={index} className="bg-slate-950/50 w-full p-0 shadow-md rounded-lg overflow-hidden">
