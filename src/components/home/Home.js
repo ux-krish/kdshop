@@ -15,12 +15,12 @@ const UiProduct = [
   },
   {
     id: 2,
-    title : "Widgets",
-    description: "Description of Product 2",
+    title : "Optimizer",
+    description: "Optimize your images",
     classes: "bg-gradient-to-br from-yellow-400 to-green-500 hover:bg-gradient-to-br hover:from-pink-400 hover:to-purple-500",
     btnClasses : "bg-lime-500",
     imgUrl : "https://img.freepik.com/free-vector/neon-home-screen-template-smartphone_23-2148736061.jpg?t=st=1710361102~exp=1710364702~hmac=c68c8a13eab86a3cf31b2cfa961683d9d6901676948c95c394d92f57e1bebd65&w=1380",
-    link : "/"
+    link : "/optimizer"
   },
   {
     id: 3,

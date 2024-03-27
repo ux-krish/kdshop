@@ -64,10 +64,24 @@ const Nav = ({onLogout, loggedIn}) => {
                   handleSidebarToggle();
                 }}
                 className={`px-5 py-2 w-full block text-sm font-medium  rounded-sm tracking-wider uppercase text-gray-300 hover:bg-indigo-500 transition-all ease-in-out duration-150 ${
-                  active === '/gallery' ? 'bg-indigo-500  text-slate-800' : ''
+                  active === '/weather' ? 'bg-indigo-500  text-slate-800' : ''
                 }`}
               >
                 Weather
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/optimizer"
+                onClick={() => {
+                  handleClick('/optimizer');
+                  handleSidebarToggle();
+                }}
+                className={`px-5 py-2 w-full block text-sm font-medium  rounded-sm tracking-wider uppercase text-gray-300 hover:bg-indigo-500 transition-all ease-in-out duration-150 ${
+                  active === '/optimizer' ? 'bg-indigo-500  text-slate-800' : ''
+                }`}
+              >
+                Optimizer
               </Link>
             </li>
             <li>

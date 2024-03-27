@@ -8,6 +8,7 @@ import Weather from './components/weather/Weather';
 import Contact from './components/contact/Contact';
 import Nav from './components/common/Nav';
 import LoginPage from './components/auth/LoginPage';
+import Optimizer from './components/optimizer/Optimizer';
 
 const App = () => {
   const [loggedIn, setLoggedIn] = useState(localStorage.getItem('loggedIn') === 'true');
@@ -35,6 +36,10 @@ const App = () => {
           <Route
             path="/weather"
             element={loggedIn ? <Weather /> : <Navigate to="/login" />}
+          />
+          <Route
+            path="/optimizer"
+            element={loggedIn ? <Optimizer /> : <Navigate to="/login" />}
           />
           <Route
             path="/contact"
